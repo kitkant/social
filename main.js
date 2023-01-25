@@ -20,6 +20,9 @@ app.use(cors({origin: '*'}));
 app.get('/', function(req, res) {
   res.send('hello world');
 });
+app.get('https://social-3gx9.onrender.com/', function(req, res) {
+  res.send('hello hell');
+});
 app.get('/users', function(req, res) {
     res.json(friends)
   });
