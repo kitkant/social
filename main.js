@@ -1,5 +1,10 @@
 var express = require('express');
 var cors = require('cors');
+var bodyParser = require('body-parser')
+
+
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var app = express();
 const port = 3000
@@ -14,19 +19,47 @@ const friends = {
         {id: 4, first_name: "Sara", last_name: 'Pirson', country : 'Canada', city: 'Toronto', status: 'Greate spirit', img, subscribe: true, }
     ]
 }
+const auth = {
+  login: [
+
+  ]
+}
+const postForm = {
+  message: [
+
+  ]
+}
+
 
 app.use(cors({origin: '*'}));
 
 app.get('/', function(req, res) {
   res.send('hello world');
 });
-app.get('https://social-3gx9.onrender.com/', function(req, res) {
-  res.send('hello hell');
-});
 app.get('/users', function(req, res) {
     res.json(friends)
-  });
+});
+app.get('/auth', function(req, res) {
+  res.json(auth)
+});
+app.get('/form', function(req, res) {
+  res.json(postForm)
+});
+app.post('/auth', jsonParser, function(req, res){
 
+  if(auth.login.length === 10)
+    auth.login = []
+  auth.login.push({...req.body})
+
+})
+app.post('/form', jsonParser, function(req, res){
+
+  console.log(req.body)
+
+  if(postForm.message.length === 10)
+    postForm.message = []
+  postForm.message.push({...req.body})
+})
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
