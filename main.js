@@ -1,7 +1,7 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser'
-import uuid from 'react-uuid';
+const express = require('express') 
+const cors = require('cors') 
+Const bodyParser = require('body-parser') 
+conet uuid =  require('react-uuid') 
 
 
 const jsonParser = bodyParser.json()
