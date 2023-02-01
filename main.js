@@ -1,7 +1,7 @@
 const express = require('express') 
 const cors = require('cors') 
 const bodyParser = require('body-parser') 
-conet uuid =  require('react-uuid') 
+const uuid =  require('react-uuid') 
 
 
 const jsonParser = bodyParser.json()
